@@ -1,0 +1,13 @@
+{
+  "name": "final-project-root",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "install:frontend": "npm --prefix frontend install",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "start": "npm run dev:frontend"
+  },
+  "description": "Root helper scripts for Final Project workspace. Runs frontend dev from the root.",
+  "author": "",
+  "license": "MIT"
+}
