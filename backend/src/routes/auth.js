@@ -25,6 +25,7 @@ router.post('/login', async (request, response) => {
   }
 
   if (!jwtSecret || jwtSecret.length < 32) {
+    console.error('Configuration Error: JWT_SECRET is missing or shorter than 32 characters.')
     return response.status(500).json({ message: 'Authentication is not configured' })
   }
 
@@ -53,8 +54,9 @@ router.post('/login', async (request, response) => {
       message: 'Login successful',
       admin: { id: admin.id, email: admin.email, fullName: admin.full_name, role: admin.role },
     })
-  } catch {
-    return response.status(500).json({ message: 'Unable to process login' })
+  } catch (error) {
+    console.error('CRITICAL LOGIN ERROR:', error)
+    return response.status(500).json({ message: 'Unable to process login', error: error.message })
   }
 })
 
